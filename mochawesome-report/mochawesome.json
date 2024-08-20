@@ -1,0 +1,217 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-08-20T13:09:18.631Z",
+    "end": "2024-08-20T13:09:20.531Z",
+    "duration": 1900,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8ce4c661-18ca-44e2-ab39-39d2b529f96f",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2917a1f7-e13c-46d4-8437-1e82aa40d958",
+          "title": "DELETE User",
+          "fullFile": "C:\\Users\\IAN\\Documents\\Task 7 GitHub API Automation\\api-automation-ds-batch5\\test\\deleteTest.js",
+          "file": "\\test\\deleteTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should delete a user",
+              "fullTitle": "DELETE User should delete a user",
+              "timedOut": false,
+              "duration": 1014,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await axios.delete('https://reqres.in/api/users/2');\nexpect(response.status).to.equal(204);",
+              "err": {},
+              "uuid": "952a5d3e-5de9-47b3-a261-cc920786d5a2",
+              "parentUUID": "2917a1f7-e13c-46d4-8437-1e82aa40d958",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "952a5d3e-5de9-47b3-a261-cc920786d5a2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1014,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e0be704b-97ad-4510-ab64-144a3e73891d",
+          "title": "GET Users",
+          "fullFile": "C:\\Users\\IAN\\Documents\\Task 7 GitHub API Automation\\api-automation-ds-batch5\\test\\getTest.js",
+          "file": "\\test\\getTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return a list of users",
+              "fullTitle": "GET Users should return a list of users",
+              "timedOut": false,
+              "duration": 44,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await axios.get('https://reqres.in/api/users?page=2');\nconst userSchema = {\n  title: 'User Schema',\n  type: 'object',\n  required: ['page', 'per_page', 'total', 'total_pages', 'data'],\n  properties: {\n    page: { type: 'integer' },\n    per_page: { type: 'integer' },\n    total: { type: 'integer' },\n    total_pages: { type: 'integer' },\n    data: { \n      type: 'array',\n      items: {\n        type: 'object',\n        required: ['id', 'email', 'first_name', 'last_name'],\n        properties: {\n          id: { type: 'integer' },\n          email: { type: 'string' },\n          first_name: { type: 'string' },\n          last_name: { type: 'string' },\n        },\n      },\n    },\n  },\n};\nexpect(response.status).to.equal(200);\nexpect(response.data).to.be.jsonSchema(userSchema);",
+              "err": {},
+              "uuid": "1463df77-83c1-40ff-a080-1dcc7b53d2f7",
+              "parentUUID": "e0be704b-97ad-4510-ab64-144a3e73891d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1463df77-83c1-40ff-a080-1dcc7b53d2f7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 44,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "3b2ccd83-fc93-40ab-b9f7-b3553fe862d2",
+          "title": "POST Create User",
+          "fullFile": "C:\\Users\\IAN\\Documents\\Task 7 GitHub API Automation\\api-automation-ds-batch5\\test\\postTest.js",
+          "file": "\\test\\postTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should create a new user",
+              "fullTitle": "POST Create User should create a new user",
+              "timedOut": false,
+              "duration": 393,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await axios.post('https://reqres.in/api/users', {\n  name: 'John Doe',\n  job: 'Software Developer'\n});\nconst userSchema = {\n  title: 'User Creation Schema',\n  type: 'object',\n  required: ['name', 'job', 'id', 'createdAt'],\n  properties: {\n    name: { type: 'string' },\n    job: { type: 'string' },\n    id: { type: 'string' },\n    createdAt: { type: 'string' },\n  },\n};\nexpect(response.status).to.equal(201);\nexpect(response.data).to.be.jsonSchema(userSchema);",
+              "err": {},
+              "uuid": "6ffbd56b-e3f4-4d0f-876c-10513b29fdc5",
+              "parentUUID": "3b2ccd83-fc93-40ab-b9f7-b3553fe862d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6ffbd56b-e3f4-4d0f-876c-10513b29fdc5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 393,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "dba76098-17cb-4fe5-86f3-993eb46aa6a8",
+          "title": "PUT Update User",
+          "fullFile": "C:\\Users\\IAN\\Documents\\Task 7 GitHub API Automation\\api-automation-ds-batch5\\test\\putTest.js",
+          "file": "\\test\\putTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should update an existing user",
+              "fullTitle": "PUT Update User should update an existing user",
+              "timedOut": false,
+              "duration": 440,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await axios.put('https://reqres.in/api/users/2', {\n  name: 'Jane Doe',\n  job: 'Product Manager'\n});\nconst userSchema = {\n  title: 'User Update Schema',\n  type: 'object',\n  required: ['name', 'job', 'updatedAt'],\n  properties: {\n    name: { type: 'string' },\n    job: { type: 'string' },\n    updatedAt: { type: 'string' },\n  },\n};\nexpect(response.status).to.equal(200);\nexpect(response.data).to.be.jsonSchema(userSchema);",
+              "err": {},
+              "uuid": "090537ed-a924-4fcf-b950-d90b4e61e8be",
+              "parentUUID": "dba76098-17cb-4fe5-86f3-993eb46aa6a8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "090537ed-a924-4fcf-b950-d90b4e61e8be"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 440,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.7.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
